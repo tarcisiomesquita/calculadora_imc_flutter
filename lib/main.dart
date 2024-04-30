@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:calculadora_imc_flutter/input_page.dart';
+import 'package:calculadora_imc_flutter/Screens/input_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,31 +8,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
+
     return MaterialApp(
       title: 'Calculadora de IMC',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      theme: theme.copyWith(
+        colorScheme: theme.colorScheme.copyWith(
+          primary: Colors.blueGrey,
+          secondary: Colors.blueGrey.shade100,
+        ),
+        appBarTheme: const AppBarTheme(color: Colors.orangeAccent),
       ),
-      home: const MyHomePage(title: 'Página Inicial da Calculadora de IMC'),
+      home: InputPage(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return InputPage();
   }
 }
